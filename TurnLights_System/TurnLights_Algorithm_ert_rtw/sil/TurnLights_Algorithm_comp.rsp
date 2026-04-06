@@ -1,0 +1,14 @@
+-IC:/Git_Feb_2026/BodyControlModule/TurnLights_System
+-IC:/Git_Feb_2026/BodyControlModule/TurnLights_System/TurnLights_Algorithm_ert_rtw
+-IG:/extern/include
+-IG:/simulink/include
+-IG:/rtw/c/src
+-IG:/rtw/c/src/ext_mode/common
+-IG://rtw/c/ert
+-IC:/Git_Feb_2026/BodyControlModule/TurnLights_System/TurnLights_Algorithm_ert_rtw/sil
+-IC:/Git_Feb_2026/BodyControlModule/TurnLights_System/TurnLights_Algorithm_ert_rtw/coderassumptions
+-IG:/toolbox/rtw/targets/pil/c
+-IG:/extern/include/coder/connectivity/XILTgtAppSvc
+-IG:/toolbox/coder/rtiostream/src/utils
+-IG:/toolbox/coder/rtiostream/src
+-IG:/extern/include/coder/connectivity/CoderAssumpTgtAppSvc
