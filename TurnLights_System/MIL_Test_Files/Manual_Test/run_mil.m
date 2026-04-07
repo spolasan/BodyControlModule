@@ -7,13 +7,10 @@ try
     bdclose('all');
     sltest.testmanager.clear;
 
-    % Since this script itself is inside Manual_Test,
-    % current folder should already be Manual_Test
     manualTestFolder = pwd;
-
     disp(['Current folder    : ', manualTestFolder]);
 
-    if exist(manualTestFolder, 'dir') ~= 7
+    if ~isfolder(manualTestFolder)
         error(['Current folder not found: ', manualTestFolder]);
     end
 
@@ -28,27 +25,31 @@ try
     end
 
     % Load bus/data file if needed
-    if exist('TurnLights_Bus.mat', 'file') == 2
-        disp('Loading bus file: TurnLights_Bus.mat');
-        load('TurnLights_Bus.mat');
+    busFile = fullfile(manualTestFolder, 'TurnLights_Bus.mat');
+    if isfile(busFile)
+        disp(['Loading bus file: ', busFile]);
+        load(busFile);
     else
         disp('Bus file not found or not needed.');
     end
 
     % Load model first
-    if exist('TurnLights_Model.slx', 'file') == 2
+    modelFile = fullfile(manualTestFolder, 'TurnLights_Model.slx');
+    disp(['Checking model file: ', modelFile]);
+
+    if isfile(modelFile)
         disp('Loading model: TurnLights_Model.slx');
-        load_system('TurnLights_Model.slx');
+        load_system(modelFile);
         disp('Model loaded successfully.');
     else
-        error('Model file TurnLights_Model.slx not found.');
+        error(['Model file not found: ', modelFile]);
     end
 
     % Check suite file
     tf = fullfile(manualTestFolder, 'TurnLights_TestSuite.mldatx');
     disp(['Checking test suite: ', tf]);
 
-    if exist(tf, 'file') ~= 2
+    if ~isfile(tf)
         error(['Test suite file not found: ', tf]);
     end
 
