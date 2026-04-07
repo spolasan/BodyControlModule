@@ -7,24 +7,18 @@ try
     bdclose('all');
     sltest.testmanager.clear;
 
-    % Workspace root from Jenkins
-    rootFolder = pwd;
-    manualTestFolder = fullfile(rootFolder, 'TurnLights_System', 'MIL_Test_Files', 'Manual_Test');
+    % Since this script itself is inside Manual_Test,
+    % current folder should already be Manual_Test
+    manualTestFolder = pwd;
 
-    disp(['Root folder       : ', rootFolder]);
-    disp(['Manual_Test folder: ', manualTestFolder]);
+    disp(['Current folder    : ', manualTestFolder]);
 
     if exist(manualTestFolder, 'dir') ~= 7
-        error(['Manual_Test folder not found: ', manualTestFolder]);
+        error(['Current folder not found: ', manualTestFolder]);
     end
 
-    % Move into Manual_Test folder
-    cd(manualTestFolder);
     addpath(genpath(manualTestFolder));
 
-    disp(['Current folder    : ', pwd]);
-
-    % Show folder contents for debugging
     disp('=== Files in Manual_Test folder ===');
     folderFiles = dir;
     for k = 1:length(folderFiles)
@@ -71,7 +65,6 @@ try
     results = sltest.testmanager.run;
     disp('Test execution finished.');
 
-    % Display raw result object
     disp(results);
 
     disp('=== MIL Run Completed Successfully ===');
